@@ -1,7 +1,4 @@
-﻿using Microsoft.Owin;
-using Owin;
-using System;
-using System.Threading.Tasks;
+﻿using Owin;
 using University.BL.Data;
 
 namespace University.API
