@@ -10,8 +10,8 @@ namespace University.BL.DTOs
         {
             return new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Course, CourseDTO>();
-                cfg.CreateMap<CourseDTO, Course>();
+                cfg.CreateMap<Course, CourseDTO>();//GET
+                cfg.CreateMap<CourseDTO, Course>();//POST, PUT
 
                 cfg.CreateMap<Instructor, InstructorDTO>();
                 cfg.CreateMap<InstructorDTO, Instructor>();

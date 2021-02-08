@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -52,6 +55,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\UniversityContext.cs" />
+    <Compile Include="DTOs\CourseDTO.cs" />
+    <Compile Include="DTOs\CourseInstructorDTO.cs" />
+    <Compile Include="DTOs\EnrollmentDTO.cs" />
+    <Compile Include="DTOs\InstructorDTO.cs" />
+    <Compile Include="DTOs\MapperConfig.cs" />
+    <Compile Include="DTOs\OfficeAssignmentDTO.cs" />
+    <Compile Include="DTOs\StudentDTO.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseInstructor.cs" />
     <Compile Include="Models\Department.cs" />
@@ -82,9 +92,7 @@
     <Compile Include="Services\IOfficeAssignmentService.cs" />
     <Compile Include="Services\IStudentService.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DTOs\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
