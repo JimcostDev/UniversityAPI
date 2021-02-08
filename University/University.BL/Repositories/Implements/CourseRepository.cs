@@ -9,16 +9,16 @@ namespace University.BL.Repositories.Implements
 {
     public class CourseRepository : GeneryRepository<Course>, ICourseRepository
     {
-        private readonly UniversityContext universityContext;
+        private readonly UniversityContext _universityContext;
         public CourseRepository(UniversityContext universityContext) : base(universityContext)
         {
-            this.universityContext = universityContext;
+            _universityContext = universityContext;
         }
 
         public async Task<bool> DeleteCheckOnEntity(int id)
         {
             //LINQ
-            var flag = await universityContext.CourseInstructors.Where(x => x.CourseID == id).AnyAsync();
+            var flag = await _universityContext.CourseInstructors.Where(x => x.CourseID == id).AnyAsync();
             return flag;
         }
 
@@ -29,7 +29,7 @@ namespace University.BL.Repositories.Implements
         //  WHERE CourseID = 1045
         public async Task<IEnumerable<Student>> GetStudentByCourses(int id)
         {
-            var students = universityContext.Enrollments
+            var students = _universityContext.Enrollments
                             .Include("Student")
                             .Where(x => x.CourseID == id)
                             .Select(x => x.Student);

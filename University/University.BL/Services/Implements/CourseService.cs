@@ -7,21 +7,21 @@ namespace University.BL.Services.Implements
 {
     public class CourseService : GenericService<Course>, ICourseService
     {
-        private readonly ICourseRepository courseRepository;
+        private readonly ICourseRepository _courseRepository;
         public CourseService(ICourseRepository courseRepository) : base(courseRepository)
         {
-            this.courseRepository = courseRepository;
+            _courseRepository = courseRepository;
         }
 
         public async Task<bool> DeleteCheckOnEntity(int id)
         {
-            var flag = await courseRepository.DeleteCheckOnEntity(id);
+            var flag = await _courseRepository.DeleteCheckOnEntity(id);
             return flag;
         }
 
         public async Task<IEnumerable<Student>> GetStudentByCourses(int id)
         {
-            return await courseRepository.GetStudentByCourses(id);
+            return await _courseRepository.GetStudentByCourses(id);
         }
     }
 }
