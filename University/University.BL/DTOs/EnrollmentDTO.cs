@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace University.BL.DTOs
 {
+    public enum Grade
+    {
+        A, B, C, D, E
+    }
     public class EnrollmentDTO
     {
 
@@ -14,7 +18,7 @@ namespace University.BL.DTOs
         public int CourseID { get; set; }
 
         public int StudentID { get; set; }
-        public char Grade { get; set; }
+        public Grade Grade { get; set; }
 
         //dependencias (modelos):
         public CourseDTO Course { get; set; }
