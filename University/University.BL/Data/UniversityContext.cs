@@ -5,6 +5,7 @@ namespace University.BL.Data
 {
     public class UniversityContext : DbContext
     {
+        private static UniversityContext _universityContext = null;
         public UniversityContext() : base("UniversityContext")
         {
 

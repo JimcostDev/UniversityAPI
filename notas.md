@@ -3,4 +3,4 @@
 
 -- Microsoft.AspNet.Identity.Owin ->  University.API
 
--- AutoMapper -> University.BL, University.API, University.API
+-- AutoMapper -> University.BL, University.API
