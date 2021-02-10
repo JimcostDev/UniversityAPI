@@ -76,8 +76,10 @@
     <Compile Include="Repositories\Implements\CourseRepository.cs" />
     <Compile Include="Repositories\Implements\GeneryRepository.cs" />
     <Compile Include="Repositories\Implements\InstructorRepository.cs" />
+    <Compile Include="Repositories\Implements\OfficeAssignmentRepository - Copia.cs" />
     <Compile Include="Repositories\Implements\OfficeAssignmentRepository.cs" />
     <Compile Include="Repositories\Implements\StudentRepository.cs" />
+    <Compile Include="Repositories\IEnrollmentRepository.cs" />
     <Compile Include="Repositories\IOfficeAssignmentRepository.cs" />
     <Compile Include="Repositories\IStudentRepository.cs" />
     <Compile Include="Services\ICourseService.cs" />
