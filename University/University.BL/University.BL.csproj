@@ -72,9 +72,11 @@
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ICourseRepository.cs" />
+    <Compile Include="Repositories\ICourseInstructorRepository.cs" />
     <Compile Include="Repositories\IGenericRepository.cs" />
     <Compile Include="Repositories\IInstructorRepository.cs" />
     <Compile Include="Repositories\Implements\CourseRepository.cs" />
+    <Compile Include="Repositories\Implements\CourseInstructorRepository.cs" />
     <Compile Include="Repositories\Implements\GeneryRepository.cs" />
     <Compile Include="Repositories\Implements\InstructorRepository.cs" />
     <Compile Include="Repositories\Implements\EnrollmentRepository.cs" />

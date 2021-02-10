@@ -6,7 +6,5 @@
         public int CourseID { get; set; }
         public int InstructorID { get; set; }
 
-        public CourseDTO Course { get; set; }
-        public InstructorDTO Instructor { get; set; }
     }
 }
