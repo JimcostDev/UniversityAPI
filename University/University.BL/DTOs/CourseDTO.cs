@@ -18,7 +18,7 @@ namespace University.BL.DTOs
         [Required(ErrorMessage = "The Credits is required")]
         public int Credits { get; set; }
 
-        public ICollection<CourseInstructorDTO> CourseInstructors { get; set; }
+        
 
         public string TitleCredits
         {

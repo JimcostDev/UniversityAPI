@@ -12,13 +12,19 @@ namespace University.BL.DTOs
     }
     public class EnrollmentDTO
     {
+        public EnrollmentDTO()
+        {
+            Course = new CourseDTO();
+            Student = new StudentDTO();
+        }
 
         public int EnrollmentID { get; set; }
 
         public int CourseID { get; set; }
 
         public int StudentID { get; set; }
-        public Grade Grade { get; set; }
+        public Grade Grade { get; set; } = Grade.A;
+
 
         //dependencias (modelos):
         public CourseDTO Course { get; set; }

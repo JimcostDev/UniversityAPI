@@ -24,8 +24,5 @@ namespace University.BL.DTOs
                 return string.Format("{0} {1}", LastName, FirstMidName);
             }
         }
-
-        public ICollection<CourseInstructorDTO> CourseInstructors { get; set; }
-        public OfficeAssignmentDTO OfficeAssignment { get; set; }
     }
 }

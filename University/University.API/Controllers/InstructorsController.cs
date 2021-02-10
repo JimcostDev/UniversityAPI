@@ -14,11 +14,11 @@ using University.BL.Services.Implements;
 
 namespace University.API.Controllers
 {
-    public class StudentsController : ApiController
+    public class InstructorsController : ApiController
     {
         private IMapper _mapper;
-        private readonly StudentService studentService = new StudentService(new StudentRepository(UniversityContext.Create()));
-        public StudentsController()
+        private readonly InstructorService instructorService = new InstructorService(new InstructorRepository(UniversityContext.Create()));
+        public InstructorsController()
         {
             //crear mapper
             _mapper = WebApiApplication.MapperConfiguration.CreateMapper();
@@ -27,10 +27,10 @@ namespace University.API.Controllers
         [HttpGet]
         public async Task<IHttpActionResult> GetAll()//se devuelve un DTO
         {
-            var students = await studentService.GetAll();
+            var instructors = await instructorService.GetAll();
             //AutoMapper
-            var studentsDTO = students.Select(x => _mapper.Map<StudentDTO>(x));
-            return Ok(studentsDTO);
+            var instructorsDTO = instructors.Select(x => _mapper.Map<InstructorDTO>(x));
+            return Ok(instructorsDTO);
         }
         #endregion
 
@@ -38,29 +38,29 @@ namespace University.API.Controllers
         [HttpGet]
         public async Task<IHttpActionResult> GetById(int id)//se devuelve un DTO
         {
-            var student = await studentService.GetById(id);
-            if (student == null)
+            var instructor = await instructorService.GetById(id);
+            if (instructor == null)
             {
                 return NotFound();
             }
 
-            var studentDTO = _mapper.Map<StudentDTO>(student);
+            var instructorDTO = _mapper.Map<InstructorDTO>(instructor);
 
-            return Ok(studentDTO);
+            return Ok(instructorDTO);
         }
         #endregion
 
         #region INSERT
         /// <summary>
-        /// Crear un objeto de estudiante
+        /// Crear un objeto de instructor
         /// </summary>
-        /// <param name="studentDTO">Objeto del estudiante</param>
-        /// <returns>Objeto de estudiante</returns>
+        /// <param name="instructorDTO">Objeto del instructor</param>
+        /// <returns>Objeto de instructor</returns>
         /// <response code="200">Ok. Devuelve el objeto solicitado.</response>
         /// <response code="400">BadRequest. No se cumple con la validación del modelo.</response>
         /// <response code="500">InternalServerError. Se ha presentado un error.</response>
         [HttpPost]
-        public async Task<IHttpActionResult> Insert(StudentDTO studentDTO)//se devuelve un modelo
+        public async Task<IHttpActionResult> Insert(InstructorDTO instructorDTO)//se devuelve un modelo
         {
             if (!ModelState.IsValid)
             {
@@ -69,9 +69,9 @@ namespace University.API.Controllers
 
             try
             {
-                var student = _mapper.Map<Student>(studentDTO);
-                student = await studentService.Insert(student);
-                return Ok(student);
+                var instructor = _mapper.Map<Instructor>(instructorDTO);
+                instructor = await instructorService.Insert(instructor);
+                return Ok(instructor);
             }
             catch (Exception ex)
             {

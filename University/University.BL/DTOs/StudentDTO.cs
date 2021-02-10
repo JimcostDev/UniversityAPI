@@ -6,6 +6,7 @@ namespace University.BL.DTOs
 {
     public class StudentDTO
     {
+        
         public int ID { get; set; }
         [Display(Name = "Last Name")]
         [Required(ErrorMessage = "The LastName is required")]
@@ -25,6 +26,6 @@ namespace University.BL.DTOs
                 return string.Format("{0} {1}", LastName, FirstMidName);
             }
         }
-        public ICollection<EnrollmentDTO> Enrollment { get; set; }
+        
     }
 }
