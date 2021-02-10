@@ -16,7 +16,5 @@ namespace University.BL.DTOs
         [StringLength(50)]
         public string Location { get; set; }
 
-        //dependencias (modelos):
-        public InstructorDTO Instructor { get; set; }
     }
 }

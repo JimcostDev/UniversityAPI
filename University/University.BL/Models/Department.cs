@@ -10,7 +10,7 @@ namespace University.BL.Models
         [Key]
         public int DepartmentID { get; set; }
         public string Name { get; set; }
-        public float Budget { get; set; }
+        public Decimal Budget { get; set; }
         public DateTime StartDate { get; set; }
         [ForeignKey("Instructor")]
         public int InstructorID { get; set; }
