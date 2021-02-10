@@ -24,6 +24,12 @@ namespace University.BL.DTOs
 
                 cfg.CreateMap<OfficeAssignment, OfficeAssignmentDTO>();
                 cfg.CreateMap<OfficeAssignmentDTO, OfficeAssignment>();
+
+                cfg.CreateMap<Department, DepartmentDTO>();
+                cfg.CreateMap<DepartmentDTO, Department>();
+
+                cfg.CreateMap<CourseInstructor, CourseInstructorDTO>();
+                cfg.CreateMap<CourseInstructorDTO, CourseInstructor>();
             });
         }
     }
