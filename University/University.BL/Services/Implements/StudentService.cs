@@ -16,6 +16,12 @@ namespace University.BL.Services.Implements
             this.studentRepository = studentRepository;
         }
 
+        public async Task<bool> DeleteCheckOnEntity(int id)
+        {
+            var flag = await studentRepository.DeleteCheckOnEntity(id);
+            return flag;
+        }
+
         public async Task<IEnumerable<Course>> GetCoursesByStudent(int id)
         {
             return await studentRepository.GetCoursesByStudent(id);

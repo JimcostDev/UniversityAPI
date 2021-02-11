@@ -9,6 +9,7 @@ namespace University.BL.Services
 {
     public interface IStudentService : IGenericServices<Student>
     {
+        Task<bool> DeleteCheckOnEntity(int id);
         Task<IEnumerable<Course>> GetCoursesByStudent(int id);
     }
 }

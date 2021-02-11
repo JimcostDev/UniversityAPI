@@ -31,5 +31,12 @@ namespace University.BL.Repositories.Implements
 
             return await courses.ToListAsync();
         }
+
+        public async Task<bool> DeleteCheckOnEntity(int id)
+        {
+            //LINQ
+            var flag = await _universityContext.Enrollments.Where(x => x.StudentID == id).AnyAsync();
+            return flag;
+        }
     }
 }
