@@ -81,5 +81,38 @@ namespace University.API.Controllers
         }
         #endregion
 
+        #region PUT
+        [HttpPut]
+        public async Task<IHttpActionResult> Edit(EnrollmentDTO enrollmentDTO, int id)//se devuelve un modelo
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (enrollmentDTO.EnrollmentID != id)
+            {
+                return BadRequest();        
+            }
+            var flag = await enrollmentService.GetById(id);
+            if (flag == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                var enrollment = _mapper.Map<Enrollment>(enrollmentDTO);
+                enrollment = await enrollmentService.Update(enrollment);
+                return Ok(enrollment);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+
+        }
+        #endregion
+
     }
 }
