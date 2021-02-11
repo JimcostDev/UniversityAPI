@@ -92,7 +92,7 @@ namespace University.API.Controllers
 
             if (enrollmentDTO.EnrollmentID != id)
             {
-                return BadRequest();        
+                return BadRequest();
             }
             var flag = await enrollmentService.GetById(id);
             if (flag == null)
@@ -108,6 +108,29 @@ namespace University.API.Controllers
             }
             catch (Exception ex)
             {
+                return InternalServerError(ex);
+            }
+
+        }
+        #endregion
+
+        #region DELETE
+        [HttpDelete]
+        public async Task<IHttpActionResult> Delete(int id)//se devuelve un DTO
+        {
+            var flag = await enrollmentService.GetById(id);
+            if (flag == null)
+            {
+                return NotFound();
+            }
+            try
+            {
+                await enrollmentService.Delete(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+
                 return InternalServerError(ex);
             }
 
