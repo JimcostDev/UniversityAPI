@@ -118,8 +118,16 @@ namespace University.API.Controllers
             }
             try
             {
-                await courseService.Delete(id);
-                return Ok();
+                //si el objeto no esta relacionado en otra entidad, lo puede eliminar.
+                if (!await courseService.DeleteCheckOnEntity(id))
+                {
+                    await courseService.Delete(id);
+                    return Ok();
+                }
+                else
+                {
+                    throw new Exception("No se puede eliminar el objeto, esta relacionado en otra entidad.");
+                }
             }
             catch (Exception ex)
             {

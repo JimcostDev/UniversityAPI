@@ -19,6 +19,7 @@ namespace University.BL.Repositories.Implements
         {
             //LINQ
             var flag = await _universityContext.CourseInstructors.Where(x => x.CourseID == id).AnyAsync();
+            //flag = await _universityContext.Enrollments.Where(x => x.CourseID == id).AnyAsync();
             return flag;
         }
 
