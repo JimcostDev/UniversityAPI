@@ -20,5 +20,10 @@ namespace University.BL.Services.Implements
         {
             return await instructorRepository.GetCoursesByInstructor(id);
         }
+        public async Task<bool> DeleteCheckOnEntity(int id)
+        {
+            var flag = await instructorRepository.DeleteCheckOnEntity(id);
+            return flag;
+        }
     }
 }

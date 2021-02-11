@@ -114,5 +114,36 @@ namespace University.API.Controllers
         }
         #endregion
 
+        #region DELETE
+        [HttpDelete]
+        public async Task<IHttpActionResult> Delete(int id)//se devuelve un DTO
+        {
+            var flag = await instructorService.GetById(id);
+            if (flag == null)
+            {
+                return NotFound();
+            }
+            try
+            {
+                //si el objeto no esta relacionado en otra entidad, lo puede eliminar.
+                if (!await instructorService.DeleteCheckOnEntity(id))
+                {
+                    await instructorService.Delete(id);
+                    return Ok();
+                }
+                else
+                {
+                    throw new Exception("No se puede eliminar el objeto, esta relacionado en otra entidad.");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return InternalServerError(ex);
+            }
+
+        }
+        #endregion
+
     }
 }

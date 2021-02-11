@@ -9,10 +9,10 @@ namespace University.BL.Repositories.Implements
 {
     public class InstructorRepository : GeneryRepository<Instructor>, IInstructorRepository
     {
-        private readonly UniversityContext universityContext;
+        private readonly UniversityContext _universityContext;
         public InstructorRepository(UniversityContext universityContext) : base(universityContext)
         {
-            this.universityContext = universityContext;
+            _universityContext = universityContext;
         }
 
         public async Task<IEnumerable<Course>> GetCoursesByInstructor(int id)
@@ -22,7 +22,7 @@ namespace University.BL.Repositories.Implements
             //  FROM[University].[dbo].[CourseInstructor] courseInst
             //  JOIN[dbo].[Course] course ON course.CourseID = courseInst.CourseID --RELACION DE LA FK A LA PK
             //  WHERE courseInst.InstructorID = 5
-            var courses = universityContext.CourseInstructors
+            var courses = _universityContext.CourseInstructors
                             .Include("Course")
                             .Where(x => x.InstructorID == id)
                             .Select(x => x.Course);
@@ -34,6 +34,17 @@ namespace University.BL.Repositories.Implements
             //                where courseInstructors.InstructorID == id
             //                select course);
             return await courses.ToListAsync();
+        }
+
+        public async Task<bool> DeleteCheckOnEntity(int id)
+        {
+            
+
+            //LINQ
+            var flag = await _universityContext.CourseInstructors.Where(x => x.InstructorID == id).AnyAsync() ||
+                await _universityContext.Departments.Where(x => x.InstructorID == id).AnyAsync() ||
+                await _universityContext.OfficeAssignments.Where(x => x.InstructorID == id).AnyAsync();
+            return flag;
         }
     }
 }
