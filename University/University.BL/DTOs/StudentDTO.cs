@@ -17,6 +17,7 @@ namespace University.BL.DTOs
         [StringLength(50)]
         public string FirstMidName { get; set; }
         [DataType(DataType.Date)]
+        [Required]
         public DateTime EnrollmentDate { get; set; }
 
         public string FullName
