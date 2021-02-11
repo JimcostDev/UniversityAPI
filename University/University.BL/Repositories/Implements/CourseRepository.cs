@@ -18,8 +18,8 @@ namespace University.BL.Repositories.Implements
         public async Task<bool> DeleteCheckOnEntity(int id)
         {
             //LINQ
-            var flag = await _universityContext.CourseInstructors.Where(x => x.CourseID == id).AnyAsync();
-            //flag = await _universityContext.Enrollments.Where(x => x.CourseID == id).AnyAsync();
+            var flag = await _universityContext.CourseInstructors.Where(x => x.CourseID == id).AnyAsync() ||
+            await _universityContext.Enrollments.Where(x => x.CourseID == id).AnyAsync();
             return flag;
         }
 

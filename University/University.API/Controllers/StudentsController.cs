@@ -81,5 +81,46 @@ namespace University.API.Controllers
         }
         #endregion
 
+        #region PUT
+        /// <summary>
+        /// Crear un objeto de estudiante
+        /// </summary>
+        /// <param name="studentDTO">Objeto del estudiante</param>
+        /// <returns>Objeto de estudiante</returns>
+        /// <response code="200">Ok. Devuelve el objeto solicitado.</response>
+        /// <response code="400">BadRequest. No se cumple con la validación del modelo.</response>
+        /// <response code="500">InternalServerError. Se ha presentado un error.</response>
+        [HttpPut]
+        public async Task<IHttpActionResult> Edit(StudentDTO studentDTO, int id)//se devuelve un modelo
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (studentDTO.ID != id)
+            {
+                return BadRequest();
+            }
+
+            var flag = await studentService.GetById(id);
+            if (flag == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                var student = _mapper.Map<Student>(studentDTO);
+                student = await studentService.Update(student);
+                return Ok(student);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+
+        }
+        #endregion
+
     }
 }
