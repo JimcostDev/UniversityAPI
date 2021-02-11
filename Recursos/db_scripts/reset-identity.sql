@@ -1,0 +1,1 @@
+DBCC CHECKIDENT ('aqui_va_la_tabla', RESEED, 1)

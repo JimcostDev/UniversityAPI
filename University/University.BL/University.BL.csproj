@@ -88,9 +88,11 @@
     <Compile Include="Repositories\IOfficeAssignmentRepository.cs" />
     <Compile Include="Repositories\IStudentRepository.cs" />
     <Compile Include="Services\ICourseService.cs" />
+    <Compile Include="Services\ICourseInstructorService.cs" />
     <Compile Include="Services\IGenericServices.cs" />
     <Compile Include="Services\IInstructorService.cs" />
     <Compile Include="Services\Implements\CourseService.cs" />
+    <Compile Include="Services\Implements\CourseInstructorService.cs" />
     <Compile Include="Services\Implements\GenericService.cs" />
     <Compile Include="Services\Implements\InstructorService.cs" />
     <Compile Include="Services\Implements\EnrollmentService.cs" />
