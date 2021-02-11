@@ -50,7 +50,7 @@ namespace University.API.Controllers
         }
         #endregion
 
-        #region INSERT
+        #region POST
         [HttpPost]
         public async Task<IHttpActionResult> Insert(CourseDTO courseDTO)//se devuelve un modelo
         {
@@ -70,7 +70,41 @@ namespace University.API.Controllers
                 return InternalServerError(ex);
             }
             
-        } 
+        }
+        #endregion
+
+        #region PUT
+        [HttpPut]
+        public async Task<IHttpActionResult> Edit(CourseDTO courseDTO, int id)//se devuelve un modelo
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (courseDTO.CourseID != id)
+            {
+                return BadRequest();
+            }
+
+            var flag = await courseService.GetById(id);
+            if (flag == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                var course = _mapper.Map<Course>(courseDTO);
+                course = await courseService.Update(course);
+                return Ok(course);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+
+        }
         #endregion
 
     }
