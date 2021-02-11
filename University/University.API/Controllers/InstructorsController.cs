@@ -81,5 +81,38 @@ namespace University.API.Controllers
         }
         #endregion
 
+        #region PUT
+        [HttpPut]
+        public async Task<IHttpActionResult> Edit(InstructorDTO instructorDTO, int id)//se devuelve un modelo
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (instructorDTO.ID != id)
+            {
+                return BadRequest();
+            }
+
+            var flag = await instructorService.GetById(id);
+            if (flag == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                var instructor = _mapper.Map<Instructor>(instructorDTO);
+                instructor = await instructorService.Update(instructor);
+                return Ok(instructor);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+
+        }
+        #endregion
+
     }
 }
