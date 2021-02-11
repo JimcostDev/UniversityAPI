@@ -45,7 +45,7 @@ namespace University.API.Controllers
             }
 
             var courseDTO = _mapper.Map<CourseDTO>(course);
-          
+
             return Ok(courseDTO);
         }
         #endregion
@@ -69,7 +69,7 @@ namespace University.API.Controllers
             {
                 return InternalServerError(ex);
             }
-            
+
         }
         #endregion
 
@@ -101,6 +101,29 @@ namespace University.API.Controllers
             }
             catch (Exception ex)
             {
+                return InternalServerError(ex);
+            }
+
+        }
+        #endregion
+
+        #region DELETE
+        [HttpDelete]
+        public async Task<IHttpActionResult> Delete(int id)//se devuelve un DTO
+        {
+            var flag = await courseService.GetById(id);
+            if (flag == null)
+            {
+                return NotFound();
+            }
+            try
+            {
+                await courseService.Delete(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+
                 return InternalServerError(ex);
             }
 
