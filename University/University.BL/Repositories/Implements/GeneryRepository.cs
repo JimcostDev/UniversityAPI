@@ -48,8 +48,8 @@ namespace University.BL.Repositories.Implements
 
         public async Task<TEntity> Update(TEntity entity)
         {
-            universityContext.Set<TEntity>().AddOrUpdate(entity);
-            //universityContext.Entry(entity).State = EntityState.Modified;
+            universityContext.Set<TEntity>().AddOrUpdate(entity); // database first
+            //universityContext.Entry(entity).State = EntityState.Modified; //code first (para migraciones)
             await universityContext.SaveChangesAsync();
             return entity;
         }
