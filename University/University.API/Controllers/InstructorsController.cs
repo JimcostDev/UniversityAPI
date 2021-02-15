@@ -95,9 +95,9 @@ namespace University.API.Controllers
 
         #region PUT
         /// <summary>
-        /// Modificar un objeto de Enrollment
+        /// Modificar un objeto de Instructors
         /// </summary>
-        /// <param name="instructorDTO">Objeto de enrollment</param>
+        /// <param name="instructorDTO">Objeto de Instructors</param>
         /// <param name="id">Id del objeto</param>
         /// <returns>Objeto de enrollment</returns>
         /// <response code="200">Ok. Modifica el objeto solicitado.</response>
