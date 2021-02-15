@@ -81,5 +81,70 @@ namespace University.API.Controllers
         }
         #endregion
 
+        #region PUT
+        /// <summary>
+        /// Crear un objeto de officeAssignmen
+        /// </summary>
+        /// <param name="officeAssignmentDTO">Objeto del officeAssignment</param>
+        /// <returns>Objeto de officeAssignment</returns>
+        /// <response code="200">Ok. Devuelve el objeto solicitado.</response>
+        /// <response code="400">BadRequest. No se cumple con la validación del modelo.</response>
+        /// <response code="500">InternalServerError. Se ha presentado un error.</response>
+        [HttpPut]
+        public async Task<IHttpActionResult> Edit(OfficeAssignmentDTO officeAssignmentDTO, int id)//se devuelve un modelo
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (officeAssignmentDTO.InstructorID != id)
+            {
+                return BadRequest();
+            }
+
+            var flag = await officeAssignmentService.GetById(id);
+            if (flag == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                var officeAssignment = _mapper.Map<OfficeAssignment>(officeAssignmentDTO);
+                officeAssignment = await officeAssignmentService.Update(officeAssignment);
+                return Ok(officeAssignment);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+
+        }
+        #endregion
+
+        #region DELETE
+        [HttpDelete]
+        public async Task<IHttpActionResult> Delete(int id)//se devuelve un DTO
+        {
+            var flag = await officeAssignmentService.GetById(id);
+            if (flag == null)
+            {
+                return NotFound();
+            }
+            try
+            {
+                await officeAssignmentService.Delete(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+
+                return InternalServerError(ex);
+            }
+
+        }
+        #endregion
+
     }
 }
