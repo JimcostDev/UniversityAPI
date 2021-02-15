@@ -81,5 +81,70 @@ namespace University.API.Controllers
         }
         #endregion
 
+        #region PUT
+        /// <summary>
+        /// Modificar un objeto de department
+        /// </summary>
+        /// <param name="departmentDTO">Objeto del department</param>
+        /// <returns>Objeto de department</returns>
+        /// <response code="200">Ok. Devuelve el objeto solicitado.</response>
+        /// <response code="400">BadRequest. No se cumple con la validación del modelo.</response>
+        /// <response code="500">InternalServerError. Se ha presentado un error.</response>
+        [HttpPut]
+        public async Task<IHttpActionResult> Edit(DepartmentDTO departmentDTO, int id)//se devuelve un modelo
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                if (departmentDTO.DepartmentID != id)
+                {
+                    return BadRequest();
+                }
+
+                var flag = await departmentService.GetById(id);
+                if (flag == null)
+                {
+                    return NotFound();
+                }
+
+
+                var department = _mapper.Map<Department>(departmentDTO);
+                department = await departmentService.Update(department);
+                return Ok(department);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+
+        }
+        #endregion
+
+        #region DELETE
+        [HttpDelete]
+        public async Task<IHttpActionResult> Delete(int id)
+        {
+            var flag = await departmentService.GetById(id);
+            if (flag == null)
+            {
+                return NotFound();
+            }
+            try
+            {
+                await departmentService.Delete(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+
+                return InternalServerError(ex);
+            }
+
+        }
+        #endregion
+
     }
 }
