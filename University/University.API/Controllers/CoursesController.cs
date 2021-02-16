@@ -53,6 +53,7 @@ namespace University.API.Controllers
         /// <response code="200">Ok. Devuelve el objeto solicitado.</response>
         /// <response code="404">NotFound. No se ha encontrado el objeto solicitado.</response>
         [HttpGet]
+        [ResponseType(typeof(CourseDTO))]
         public async Task<IHttpActionResult> GetById(int id)//se devuelve un DTO
         {
             var course = await courseService.GetById(id);
