@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Description;
 using University.BL.Data;
 using University.BL.DTOs;
 using University.BL.Models;
@@ -30,6 +31,7 @@ namespace University.API.Controllers
         /// <returns>Listado de los objetos de cursos</returns>
         /// <response code="200">Ok. Devuelve el listado de objetos solicitado.</response>
         [HttpGet]
+        [ResponseType(typeof(IEnumerable<CourseDTO>))]
         public async Task<IHttpActionResult> GetAll()//se devuelve un DTO
         {
             var courses = await courseService.GetAll();

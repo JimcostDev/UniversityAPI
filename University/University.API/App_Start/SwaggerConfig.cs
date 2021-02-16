@@ -10,6 +10,10 @@ namespace University.API
 {
     public class SwaggerConfig
     {
+        /// <summary>
+        /// Obtenemos el path del archivo XML de documentación
+        /// </summary>
+        /// <returns></returns>
         protected static string GetXmlCommentsPath()
         {
             return Path.Combine(System.Web.HttpRuntime.AppDomainAppPath, "bin", "University.API.xml");
