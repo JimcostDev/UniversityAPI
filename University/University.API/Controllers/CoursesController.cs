@@ -15,6 +15,7 @@ using University.BL.Services.Implements;
 
 namespace University.API.Controllers
 {
+    [Authorize]
     public class CoursesController : ApiController
     {
         private IMapper _mapper;

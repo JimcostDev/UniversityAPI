@@ -60,6 +60,7 @@
     <Compile Include="DTOs\EnrollmentDTO.cs" />
     <Compile Include="DTOs\DepartmentDTO.cs" />
     <Compile Include="DTOs\InstructorDTO.cs" />
+    <Compile Include="DTOs\AccountDTO.cs" />
     <Compile Include="DTOs\MapperConfig.cs" />
     <Compile Include="DTOs\OfficeAssignmentDTO.cs" />
     <Compile Include="DTOs\StudentDTO.cs" />
