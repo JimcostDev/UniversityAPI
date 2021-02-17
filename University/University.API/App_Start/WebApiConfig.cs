@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using System.Web.Http.Cors;
 using University.API.Controllers;
 
 namespace University.API
@@ -8,7 +9,11 @@ namespace University.API
         public static void Register(HttpConfiguration config)
         {
             // Configuración y servicios de API web            
-            
+            var enableCorsAttribute = new EnableCorsAttribute("*", "Origin, Content-Type, Accept", 
+                "GET, POST, PUT, DELETE, OPTIONS");
+
+            config.EnableCors(enableCorsAttribute);
+
 
             // Rutas de API web
             config.MapHttpAttributeRoutes();
