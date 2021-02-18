@@ -15,7 +15,8 @@ using University.BL.Services.Implements;
 
 namespace University.API.Controllers
 {
-    [Authorize]
+    //[Authorize]
+    //[RoutePrefix("api/v1/Courses")]
     public class CoursesController : ApiController
     {
         private IMapper _mapper;
@@ -32,6 +33,7 @@ namespace University.API.Controllers
         /// <returns>Listado de los objetos de cursos</returns>
         /// <response code="200">Ok. Devuelve el listado de objetos solicitado.</response>
         [HttpGet]
+        //[Route("GetAll")]
         [ResponseType(typeof(IEnumerable<CourseDTO>))]
         public async Task<IHttpActionResult> GetAll()//se devuelve un DTO
         {
