@@ -15,7 +15,7 @@ using University.BL.Services.Implements;
 
 namespace University.API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     //[RoutePrefix("api/v1/Courses")]
     public class CoursesController : ApiController
     {
