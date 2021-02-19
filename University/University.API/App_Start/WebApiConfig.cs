@@ -9,8 +9,7 @@ namespace University.API
         public static void Register(HttpConfiguration config)
         {
             // Configuración y servicios de API web            
-            var enableCorsAttribute = new EnableCorsAttribute("*", "Origin, Content-Type, Accept", 
-                "GET, POST, PUT, DELETE, OPTIONS");
+            var enableCorsAttribute = new EnableCorsAttribute("*", "*", "*");
 
             config.EnableCors(enableCorsAttribute);
 
