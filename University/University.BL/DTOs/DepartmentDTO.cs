@@ -14,5 +14,8 @@ namespace University.BL.DTOs
         public DateTime StartDate { get; set; }
         
         public int InstructorID { get; set; }
+
+        //dependencias (modelos):
+        public InstructorDTO Instructor { get; set; }
     }
 }

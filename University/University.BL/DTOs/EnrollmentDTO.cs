@@ -26,8 +26,8 @@ namespace University.BL.DTOs
         public Grade Grade { get; set; } = Grade.A;
 
 
-        ////dependencias (modelos):
-        //public CourseDTO Course { get; set; }
-        //public StudentDTO Student { get; set; }
+        //dependencias (modelos):
+        public CourseDTO Course { get; set; }
+        public StudentDTO Student { get; set; }
     }
 }

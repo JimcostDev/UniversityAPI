@@ -13,5 +13,11 @@ namespace University.BL.Repositories.Implements
         {
             _universityContext = universityContext;
         }
+
+        public new async Task<IEnumerable<CourseInstructor>> GetAll()
+        {
+            var enrollments = _universityContext.CourseInstructors.Include("Course").Include("Instructor");
+            return await enrollments.ToListAsync();
+        }
     }
 }
