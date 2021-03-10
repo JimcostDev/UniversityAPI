@@ -34,7 +34,7 @@ namespace University.API.Controllers
         {
             var officeAssignments = await officeAssignmentService.GetAll();
             //AutoMapper
-            var officeAssignmentsDTO = officeAssignments.Select(x => _mapper.Map<OfficeAssignmentDTO>(x));
+            var officeAssignmentsDTO = officeAssignments.Select(x => _mapper.Map<OfficeAssignmentResponseDTO>(x));
             return Ok(officeAssignmentsDTO);
         }
         #endregion
@@ -59,7 +59,7 @@ namespace University.API.Controllers
                 return NotFound();
             }
 
-            var officeAssignmentDTO = _mapper.Map<OfficeAssignmentDTO>(officeAssignment);
+            var officeAssignmentDTO = _mapper.Map<OfficeAssignmentResponseDTO>(officeAssignment);
 
             return Ok(officeAssignmentDTO);
         }
@@ -75,7 +75,7 @@ namespace University.API.Controllers
         /// <response code="400">BadRequest. No se cumple con la validación del modelo.</response>
         /// <response code="500">InternalServerError. Se ha presentado un error.</response>
         [HttpPost]
-        public async Task<IHttpActionResult> Insert(OfficeAssignmentDTO officeAssignmentDTO)//se devuelve un modelo
+        public async Task<IHttpActionResult> Insert(OfficeAssignmentRequestDTO officeAssignmentDTO)//se devuelve un modelo
         {
             if (!ModelState.IsValid)
             {
@@ -107,7 +107,7 @@ namespace University.API.Controllers
         /// <response code="400">BadRequest. No se cumple con la validación del modelo.</response>
         /// <response code="500">InternalServerError. Se ha presentado un error.</response>
         [HttpPut]
-        public async Task<IHttpActionResult> Edit(OfficeAssignmentDTO officeAssignmentDTO, int id)//se devuelve un modelo
+        public async Task<IHttpActionResult> Edit(OfficeAssignmentRequestDTO officeAssignmentDTO, int id)//se devuelve un modelo
         {
             if (!ModelState.IsValid)
             {
