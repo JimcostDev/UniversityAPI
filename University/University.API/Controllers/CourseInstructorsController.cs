@@ -31,7 +31,7 @@ namespace University.API.Controllers
         {
             var courseInstructors = await courseInstructorService.GetAll();
             //AutoMapper
-            var courseInstructorsDTO = courseInstructors.Select(x => _mapper.Map<CourseInstructorDTO>(x));
+            var courseInstructorsDTO = courseInstructors.Select(x => _mapper.Map<CourseInstructorResponseDTO>(x));
             return Ok(courseInstructorsDTO);
         }
         #endregion
@@ -56,7 +56,7 @@ namespace University.API.Controllers
                 return NotFound();
             }
 
-            var courseInstructorDTO = _mapper.Map<CourseInstructorDTO>(courseInstructor);
+            var courseInstructorDTO = _mapper.Map<CourseInstructorResponseDTO>(courseInstructor);
 
             return Ok(courseInstructorDTO);
         }
@@ -72,7 +72,7 @@ namespace University.API.Controllers
         /// <response code="400">BadRequest. No se cumple con la validación del modelo.</response>
         /// <response code="500">InternalServerError. Se ha presentado un error.</response>
         [HttpPost]
-        public async Task<IHttpActionResult> Insert(CourseInstructorDTO courseInstructorDTO)//se devuelve un modelo
+        public async Task<IHttpActionResult> Insert(CourseInstructorRequestDTO courseInstructorDTO)//se devuelve un modelo
         {
             if (!ModelState.IsValid)
             {
@@ -104,7 +104,7 @@ namespace University.API.Controllers
         /// <response code="404">NotFound. No se encuentra el recurso solicitado.</response>
         /// <response code="500">InternalServerError. Se ha presentado un error.</response>
         [HttpPut]
-        public async Task<IHttpActionResult> Edit(CourseInstructorDTO courseInstructorDTO, int id)//se devuelve un modelo
+        public async Task<IHttpActionResult> Edit(CourseInstructorRequestDTO courseInstructorDTO, int id)//se devuelve un modelo
         {
             if (!ModelState.IsValid)
             {

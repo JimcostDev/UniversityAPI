@@ -34,7 +34,7 @@ namespace University.API.Controllers
         {
             var enrollments = await enrollmentService.GetAll();
             //AutoMapper
-            var enrollmentsDTO = enrollments.Select(x => _mapper.Map<EnrollmentDTO>(x));
+            var enrollmentsDTO = enrollments.Select(x => _mapper.Map<EnrollmentResponseDTO>(x));
             return Ok(enrollmentsDTO);
         }
         #endregion
@@ -59,7 +59,7 @@ namespace University.API.Controllers
                 return NotFound();
             }
 
-            var enrollmentDTO = _mapper.Map<EnrollmentDTO>(enrollment);
+            var enrollmentDTO = _mapper.Map<EnrollmentResponseDTO>(enrollment);
 
             return Ok(enrollmentDTO);
         }
@@ -75,7 +75,7 @@ namespace University.API.Controllers
         /// <response code="400">BadRequest. No se cumple con la validación del modelo.</response>
         /// <response code="500">InternalServerError. Se ha presentado un error.</response>
         [HttpPost]
-        public async Task<IHttpActionResult> Insert(EnrollmentDTO enrollmentDTO)//se devuelve un modelo
+        public async Task<IHttpActionResult> Insert(EnrollmentRequestDTO enrollmentDTO)//se devuelve un modelo
         {
             if (!ModelState.IsValid)
             {
@@ -106,7 +106,7 @@ namespace University.API.Controllers
         /// <response code="400">BadRequest. No se cumple con la validación del modelo.</response>
         /// <response code="500">InternalServerError. Se ha presentado un error.</response>
         [HttpPut]
-        public async Task<IHttpActionResult> Edit(EnrollmentDTO enrollmentDTO, int id)//se devuelve un modelo
+        public async Task<IHttpActionResult> Edit(EnrollmentRequestDTO enrollmentDTO, int id)//se devuelve un modelo
         {
             if (!ModelState.IsValid)
             {

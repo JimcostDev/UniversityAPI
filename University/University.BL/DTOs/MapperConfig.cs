@@ -19,17 +19,17 @@ namespace University.BL.DTOs
                 cfg.CreateMap<Student, StudentDTO>();
                 cfg.CreateMap<StudentDTO, Student>();
 
-                cfg.CreateMap<Enrollment, EnrollmentDTO>();
-                cfg.CreateMap<EnrollmentDTO, Enrollment>();
+                cfg.CreateMap<Enrollment, EnrollmentResponseDTO>();
+                cfg.CreateMap<EnrollmentRequestDTO, Enrollment>();
 
                 cfg.CreateMap<OfficeAssignment, OfficeAssignmentResponseDTO>();
                 cfg.CreateMap<OfficeAssignmentRequestDTO, OfficeAssignment>();
 
-                cfg.CreateMap<Department, DepartmentDTO>();
-                cfg.CreateMap<DepartmentDTO, Department>();
+                cfg.CreateMap<Department, DepartmentResponseDTO>();
+                cfg.CreateMap<DepartmentRequestDTO, Department>();
 
-                cfg.CreateMap<CourseInstructor, CourseInstructorDTO>();
-                cfg.CreateMap<CourseInstructorDTO, CourseInstructor>();
+                cfg.CreateMap<CourseInstructor, CourseInstructorResponseDTO>();
+                cfg.CreateMap<CourseInstructorRequestDTO, CourseInstructor>();
             });
         }
     }
